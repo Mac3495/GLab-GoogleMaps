@@ -1,5 +1,6 @@
 package com.gdg.mac.demogooglemaps;
 
+import android.content.Intent;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.widget.Toast;
@@ -80,13 +81,13 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             @Override
             public boolean onMarkerClick(Marker marker) {
 
-                Toast.makeText(getApplicationContext(), marker.getTitle(), Toast.LENGTH_SHORT).show();
-
-                switch (marker.getTitle()){
-                    case "Umsa":
-                        Toast.makeText(getApplicationContext(), marker.getTitle(), Toast.LENGTH_SHORT).show();
-                        break;
-                }
+                Double lat = marker.getPosition().latitude;
+                Double lng = marker.getPosition().longitude;
+                Intent intent = new Intent(getApplicationContext(), DetailActivity.class);
+                intent.putExtra("nombre", marker.getTitle());
+                intent.putExtra("lat", lat);
+                intent.putExtra("lng", lng);
+                startActivity(intent);
 
                 return false;
             }
