@@ -54,6 +54,43 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap.animateCamera(CameraUpdateFactory.zoomTo(15));
 
 
+
+        LatLng latLng1 = new LatLng(-16.5048825, -68.1304174);
+        LatLng latLng2 = new LatLng(-16.5160369, -68.1287711);
+        LatLng latLng3 = new LatLng(-16.5305552, -68.1092709);
+        LatLng latLng4 = new LatLng(-16.50234, -68.13259);
+
+
+
+        m1 = mMap.addMarker(new MarkerOptions().position(latLng1).title("Umsa").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_YELLOW)));
+        m2 = mMap.addMarker(new MarkerOptions().position(latLng2).title("Sopocachi").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_ORANGE)));
+        m3 = mMap.addMarker(new MarkerOptions().position(latLng3).title("Obrajes").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN)));
+        m4 = mMap.addMarker(new MarkerOptions().position(latLng4).title("Prado").icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_launcher1)));
+
+        PolylineOptions polylineOptions = new PolylineOptions();
+        polylineOptions.add(latLng1);
+        polylineOptions.add(latLng2);
+        polylineOptions.add(latLng3);
+
+        Polyline polyline = mMap.addPolyline(polylineOptions);
+
+
+
+        mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
+            @Override
+            public boolean onMarkerClick(Marker marker) {
+
+                Toast.makeText(getApplicationContext(), marker.getTitle(), Toast.LENGTH_SHORT).show();
+
+                switch (marker.getTitle()){
+                    case "Umsa":
+                        Toast.makeText(getApplicationContext(), marker.getTitle(), Toast.LENGTH_SHORT).show();
+                        break;
+                }
+
+                return false;
+            }
+        });
     }
 
 }
